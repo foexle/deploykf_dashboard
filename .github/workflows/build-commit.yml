@@ -9,8 +9,8 @@ permissions:
   packages: write
 
 env:
-  IMAGE_OWNER: "deploykf"
-  IMAGE_TITLE: "dashboard"
+  IMAGE_OWNER: "foexle"
+  IMAGE_TITLE: "deploykf_dashboard"
   IMAGE_FOLDER: "dashboard"
   IMAGE_PLATFORMS: |-
     linux/amd64
