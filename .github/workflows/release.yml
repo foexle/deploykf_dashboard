@@ -37,22 +37,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Generate Image Tags/Labels
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            ghcr.io/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_TITLE }}
-          flavor: |
-            latest=true
-          tags: |
-            type=semver,priority=200,pattern={{major}}.{{minor}}
-            type=semver,priority=100,pattern={{version}}
-          labels: |
-            org.opencontainers.image.title=${{ env.IMAGE_TITLE }}
-            org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
-            org.opencontainers.image.url=https://github.com/${{ github.repository }}/tree/main/${{ env.IMAGE_FOLDER }}
-            org.opencontainers.image.source=https://github.com/${{ github.repository }}/tree/main/${{ env.IMAGE_FOLDER }}]
       - name: Build and Push Image
         uses: docker/build-push-action@v4
         with:
@@ -60,6 +44,6 @@ jobs:
           push: true
           platforms: ${{ env.IMAGE_PLATFORMS }}
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: latest
           cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_OWNER }}/ci/${{ env.IMAGE_TITLE }}
           cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_OWNER }}/ci/${{ env.IMAGE_TITLE }},mode=max
