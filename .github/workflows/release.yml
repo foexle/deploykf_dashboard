@@ -43,7 +43,7 @@ jobs:
           context: ./${{ env.IMAGE_FOLDER }}
           push: true
           platforms: ${{ env.IMAGE_PLATFORMS }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: latest
           labels: latest
           cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_OWNER }}/ci/${{ env.IMAGE_TITLE }}
           cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_OWNER }}/ci/${{ env.IMAGE_TITLE }},mode=max
