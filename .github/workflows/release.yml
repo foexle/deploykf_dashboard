@@ -43,8 +43,7 @@ jobs:
         with:
           context: ./${{ env.IMAGE_FOLDER }}
           push: true
-          file: ./Dockerfile
+          file: ./dashboard/Dockerfile
           builder: default
-          platforms: ${{ env.IMAGE_PLATFORMS }}
-          tags: latest
-          labels: latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
