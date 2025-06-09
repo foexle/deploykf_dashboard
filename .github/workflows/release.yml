@@ -42,7 +42,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_TITLE }
+            ghcr.io/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_TITLE }}
           flavor: |
             latest=true
           tags: |
