@@ -60,6 +60,7 @@ jobs:
             org.opencontainers.image.url=https://github.com/${{ github.repository }}/tree/main/${{ env.IMAGE_FOLDER }}
             org.opencontainers.image.source=https://github.com/${{ github.repository }}/tree/main/${{ env.IMAGE_FOLDER }}]
 
+
       - name: Build and Push Image
         uses: docker/build-push-action@v4
         with:
