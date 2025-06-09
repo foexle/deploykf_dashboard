@@ -18,10 +18,11 @@ env:
   IMAGE_PLATFORMS: |-
     linux/amd64
     linux/arm64
+ 
 
 jobs:
   permissions:
-    contents: read
+    contents: write
     packages: write
   runs-on: ubuntu-latest
   steps:
@@ -57,3 +58,13 @@ jobs:
           org.opencontainers.image.url=https://github.com/${{ github.repository }}/tree/main/${{ env.IMAGE_FOLDER }}
           org.opencontainers.image.source=https://github.com/${{ github.repository }}/tree/main/${{ env.IMAGE_FOLDER }}]
 
+    - name: Build and Push Image
+      uses: docker/build-push-action@v4
+      with:
+        context: ./${{ env.IMAGE_FOLDER }}
+        push: true
+        platforms: ${{ env.IMAGE_PLATFORMS }}
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_OWNER }}/ci/${{ env.IMAGE_TITLE }}
+        cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_OWNER }}/ci/${{ env.IMAGE_TITLE }},mode=max
