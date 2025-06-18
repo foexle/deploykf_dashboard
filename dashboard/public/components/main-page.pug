@@ -56,15 +56,10 @@ app-drawer-layout.flex(narrow='{{narrowMode}}',
                 a(href$='[[_buildHref("/manage-users", queryParams.*)]]', tabindex='-1')
                     paper-item.menu-item#contributors Manage Contributors
             aside.divider
-            a(href='https://www.deploykf.org/',
+            a(href='https://www.mirantis.com/',
                 tabindex='-1', target="_blank")
                 paper-item.menu-item
-                    | deployKF Website
-                    iron-icon.external(icon="launch")
-            a(href='https://github.com/deployKF/deployKF',
-                tabindex='-1', target="_blank")
-                paper-item.menu-item
-                    | deployKF GitHub
+                    | Mirantis Website
                     iron-icon.external(icon="launch")
     app-header-layout(fullbleed)
         app-header(slot='header', hides, hidden$='[[notFoundInIframe]]')
