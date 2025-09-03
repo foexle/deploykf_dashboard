@@ -5,10 +5,10 @@
 :host {
     @apply --layout-vertical;
     --accent-color: #007dfc;
-    --primary-background-color: #0a3b71;
-    --sidebar-default-color: rgba(255, 255, 255, 0.5);
-    --divider-color: #dadce0;
-    --border-color: #eeeeef;
+    --primary-background-color: oklch(.98 0 0 / 1);
+    --sidebar-default-color: oklch(14.5% 0 0)
+    --divider-color: oklch(92.2% 0 0)
+    --border-color: oklch(92.2% 0 0);
     --icon-color: #202124;
     --external-icon-color: var(--google-grey-700);
     --iframe-link: {
@@ -71,6 +71,8 @@ app-drawer-layout[narrow] #MainDrawer {
 
 #MainDrawer .logo {
     margin-left: 1em;
+    width: 100%;
+    height: 100%;
 }
 
 #MainDrawer a:hover {
@@ -159,7 +161,7 @@ app-drawer-layout[narrow] #MainDrawer {
 app-toolbar {
     @apply --layout-horizontal;
     @apply --layout-center;
-    background: white;
+    background: oklch(98.5% 0 0);
     transition: background .25s;
 }
 
